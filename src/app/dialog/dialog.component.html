@@ -1,0 +1,15 @@
+<div mat-dialog-actions style="display: block;">
+    <span>Fecha: {{data.fecha | date}}</span>
+    <button color="primary" mat-raised-button (click)="onNoClick()" style="float: right;">Cerrar</button>
+</div>
+
+<p>Quién firmó: {{data.firmante}}</p>
+<img width="200" height="200" src={{data.firma}}/>
+<p>Lugar: {{data.lugar}}</p>
+<p>Tipo de trabajo: {{data.tipoDeTrabajo}}</p>
+<p>Trabajo realizado: {{data.trabajo_realizado}}</p>
+<p>Hora de entrada: {{data.horaEntrada}}</p>
+<p>Hora de salida: {{data.horaSalida}}</p>
+<p>Total horas: {{data.totalHoras}}</p>
+
+
