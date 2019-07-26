@@ -11,6 +11,7 @@ import { DialogComponent, DialogOverviewExampleDialog } from './dialog/dialog.co
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import {MatInputModule} from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { Auth } from './Auth/auth';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,6 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     HttpClientModule,
     MatInputModule,
@@ -32,6 +32,7 @@ import { FormsModule } from '@angular/forms';
   providers: [
     DialogComponent,
     DialogOverviewExampleDialog,
+    Auth,
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   bootstrap: [AppComponent]

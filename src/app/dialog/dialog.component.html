@@ -1,6 +1,6 @@
 <div mat-dialog-actions style="display: block;">
     <span>Fecha: {{data.fecha | date}}</span>
-    <button color="primary" mat-raised-button (click)="onNoClick()" style="float: right;">Cerrar</button>
+    <button color="primary" mat-raised-button [mat-dialog-close]="true" style="float: right;">Cerrar</button>
 </div>
 
 <p>Quién firmó: {{data.firmante}}</p>

@@ -6,6 +6,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import {MatDatepickerInputEvent, MatDatepicker} from '@angular/material/datepicker';
 import { NgForm } from '@angular/forms';
 import { formatDate, DatePipe } from '@angular/common';
+import { Auth } from './Auth/auth';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,9 @@ import { formatDate, DatePipe } from '@angular/common';
 })
 export class AppComponent {
   title = 'Admin';
+  hiddenApp = true;
+  user: string;
+  pass: number;
   pipe = new DatePipe('es-ES');
   dateStart: number = Date.now();
   dateEnd: number = Date.now();
@@ -24,10 +28,16 @@ export class AppComponent {
                                 'horaEntrada', 'horaSalida',
                                 'lugar', 'tipoDeTrabajo', 'totalHoras',
                                 'trabajo_realizado'];
+  userAsined: string;
+  userInvalid = true;
+  passInvalid = true;
 
  
-  constructor(private partesService: FirebaseServiceService, public dialog: MatDialog, private di: DialogComponent) {
-    
+  constructor(private partesService: FirebaseServiceService,
+              public dialog: MatDialog,
+              private di: DialogComponent,
+              public auth: Auth) {
+
     this.partesService.getPartes()
     .subscribe( resp => {
       console.log(resp);
@@ -40,6 +50,23 @@ export class AppComponent {
     this.di.openDialog(row);
   }
   
+  
+  login(){
+    this.userInvalid = true;
+    this.passInvalid = true;
+    if((this.user === this.auth.user) && (Number(this.pass) === this.auth.pass)) {
+      this.hiddenApp = false;
+    } else{
+      if (this.user !== this.auth.user) {
+        this.userInvalid = false;
+      }
+      if (Number(this.pass) !== this.auth.pass) {
+        this.passInvalid = false;
+      }
+      this.hiddenApp = true;
+    }
+
+  }
 
   consultar(){
     this.partes = this.partesCopy;

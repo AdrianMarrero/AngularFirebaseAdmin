@@ -4,6 +4,15 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 export interface DialogData {
   cliente: string;
+  firmante: string;
+  horaEntrada: string;
+  horaSalida: string;
+  lugar: string;
+  firma: string;
+  tipoDeTrabajo: string;
+  totalHoras: string;
+  trabajo_realizado: string;
+  fecha: string;
 }
 
 @Component({
@@ -16,6 +25,8 @@ export class DialogComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { 
   }
+  public data: DialogData;
+  
 
   ngOnInit() {
   }
@@ -51,9 +62,5 @@ export class DialogOverviewExampleDialog {
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 
 }

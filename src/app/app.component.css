@@ -2,3 +2,15 @@ td.mat-cell{
     padding-right: 24px;
     min-width: 100px;
 }
+.loginContainer{
+    padding-top: 50px;
+    width: 200px;
+    margin: 0 auto;
+}
+.btnLogin{
+    width: 91%;
+}
+.error{
+    color: red;
+    font-size: 14px;
+}
